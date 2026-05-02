@@ -7,11 +7,9 @@ const Home = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // public ফোল্ডার থেকে animals.json ডেটা ফেচ করা
         fetch('/animals.json')
             .then(res => res.json())
             .then(data => {
-                // Featured সেকশনের জন্য প্রথম ৪টা পশু নেওয়া হচ্ছে
                 setFeaturedAnimals(data.slice(0, 4));
                 setLoading(false);
             })
@@ -21,7 +19,6 @@ const Home = () => {
     return (
         <div className="space-y-20 py-8">
             
-            {/* ১. Hero Section */}
             <div className="hero min-h-[60vh] rounded-3xl overflow-hidden glass-effect border border-white/10 animate__animated animate__fadeIn">
                 <div className="hero-content text-center">
                     <div className="max-w-3xl">
@@ -38,7 +35,6 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* ২. Featured Animals Section */}
             <section>
                 <h2 className="text-4xl font-bold text-center mb-10 text-white border-b-2 border-primary pb-2 inline-block mx-auto flex justify-center w-max">
                     Featured Animals
@@ -71,7 +67,6 @@ const Home = () => {
                 )}
             </section>
 
-            {/* ৩. Extra Section 1: Qurbani Tips */}
             <section className="glass-effect rounded-3xl p-10 border border-white/10">
                 <h2 className="text-3xl font-bold text-center mb-8 text-white">Essential Qurbani Tips</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -93,7 +88,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* ৪. Extra Section 2: Top Breeds */}
             <section className="mb-10 text-center">
                 <h2 className="text-3xl font-bold mb-8 text-white">Popular Breeds You'll Find</h2>
                 <div className="flex flex-wrap justify-center gap-4">
