@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthContext";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Helmet } from 'react-helmet-async';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
@@ -27,6 +28,9 @@ const MyOrders = () => {
 
     return (
         <div className="py-10 px-4 max-w-7xl mx-auto min-h-[60vh] animate__animated animate__fadeIn">
+            <Helmet>
+                <title>QurbaniHat | My Orders</title>
+            </Helmet>
             <h2 className="text-4xl font-black text-white mb-8 border-b border-white/10 pb-4">
                 My <span className="text-primary">Orders</span>
             </h2>

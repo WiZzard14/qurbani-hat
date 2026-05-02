@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../providers/AuthContext";
 import { HiUser, HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
+import { Helmet } from 'react-helmet-async';
 
 const AnimalDetails = () => {
     const { id } = useParams();
@@ -48,6 +49,9 @@ const AnimalDetails = () => {
 
     return (
         <div className="py-10 animate__animated animate__fadeIn px-4 lg:px-0">
+            <Helmet>
+                <title>QurbaniHat | {animal.name}</title>
+            </Helmet>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 glass-effect p-8 rounded-[2rem] border border-white/10 shadow-2xl">
                 
                 <div className="space-y-6">

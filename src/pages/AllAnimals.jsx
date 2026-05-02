@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 
 const AllAnimals = () => {
     const [animals, setAnimals] = useState([]);
@@ -33,6 +34,9 @@ const AllAnimals = () => {
 
     return (
         <div className="py-10 px-4 max-w-7xl mx-auto animate__animated animate__fadeIn">
+            <Helmet>
+                <title>QurbaniHat | All Animals</title>
+            </Helmet>
             <h2 className="text-4xl font-black text-center text-white mb-10">Explore <span className="text-primary">All Animals</span></h2>
             
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12 glass-effect p-4 rounded-2xl border border-white/10">

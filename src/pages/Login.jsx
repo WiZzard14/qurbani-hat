@@ -4,6 +4,7 @@ import { AuthContext } from "../providers/AuthContext";
 import toast from "react-hot-toast";
 import { FcGoogle } from 'react-icons/fc';
 import { HiMail, HiLockClosed } from 'react-icons/hi';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { signIn, googleSignIn } = useContext(AuthContext);
@@ -26,6 +27,9 @@ const Login = () => {
 
     return (
         <div className="min-h-[calc(100vh-200px)] flex items-center justify-center px-4 py-12 animate__animated animate__fadeIn">
+            <Helmet>
+                <title>QurbaniHat | Login</title>
+            </Helmet>
             <div className="w-full max-w-md glass-effect p-8 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
                 {/* Background Glow */}
                 <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 blur-[80px] rounded-full"></div>

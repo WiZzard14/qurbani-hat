@@ -1,12 +1,16 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthContext";
+import { Helmet } from 'react-helmet-async';
 
 const MyProfile = () => {
     const { user } = useContext(AuthContext);
 
     return (
         <div className="py-10 flex justify-center animate__animated animate__fadeIn">
+            <Helmet>
+                <title>QurbaniHat | My Profile</title>
+            </Helmet>
             <div className="card w-full max-w-md glass-effect border border-white/10 p-8 text-center">
                 <div className="avatar justify-center mb-6">
                     <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

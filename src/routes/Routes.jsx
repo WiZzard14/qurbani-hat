@@ -9,11 +9,13 @@ import PrivateRoute from "./PrivateRoute.jsx";
 import MyProfile from "../pages/MyProfile.jsx";
 import UpdateProfile from "../pages/UpdateProfile.jsx";
 import MyOrders from "../pages/MyOrders";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
+        errorElement: <ErrorPage />,
         children: [
             { path: "/", element: <Home /> },
             { path: "/animals", element: <AllAnimals /> },
@@ -35,6 +37,7 @@ export const router = createBrowserRouter([
                 path: "/my-orders", 
                 element: <PrivateRoute><MyOrders /></PrivateRoute> 
             },
+            
         ]
     }
 ]);

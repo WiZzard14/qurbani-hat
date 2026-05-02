@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import 'animate.css';
 
 const Home = () => {
@@ -19,6 +20,11 @@ const Home = () => {
     return (
         <div className="space-y-20 py-8">
             
+            {/* Dynamic Page Title */}
+            <Helmet>
+                <title>QurbaniHat | Home</title>
+            </Helmet>
+
             <div className="hero min-h-[60vh] rounded-3xl overflow-hidden glass-effect border border-white/10 animate__animated animate__fadeIn">
                 <div className="hero-content text-center">
                     <div className="max-w-3xl">

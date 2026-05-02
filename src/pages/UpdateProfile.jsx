@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthContext";
 import toast from "react-hot-toast";
+import { Helmet } from 'react-helmet-async';
 
 const UpdateProfile = () => {
     const { updateUserProfile } = useContext(AuthContext);
@@ -22,6 +23,9 @@ const UpdateProfile = () => {
 
     return (
         <div className="py-10 flex justify-center animate__animated animate__fadeIn">
+            <Helmet>
+                <title>QurbaniHat | Update Profile</title>
+            </Helmet>
             <div className="card w-full max-w-md glass-effect border border-white/10 p-8">
                 <h2 className="text-2xl font-bold text-center text-primary mb-6">Update Your Info</h2>
                 <form onSubmit={handleUpdate} className="space-y-4">
