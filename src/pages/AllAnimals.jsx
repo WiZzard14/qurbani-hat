@@ -7,7 +7,6 @@ const AllAnimals = () => {
     const [sortOrder, setSortOrder] = useState(''); // 'asc' বা 'desc' স্টোর করার জন্য
 
     useEffect(() => {
-        // ডেটা ফেচ করা
         fetch('/animals.json')
             .then(res => res.json())
             .then(data => {
@@ -17,7 +16,6 @@ const AllAnimals = () => {
             .catch(err => console.error("Error fetching data: ", err));
     }, []);
 
-    // Sorting লজিক
     const sortedAnimals = [...animals].sort((a, b) => {
         if (sortOrder === 'asc') return a.price - b.price;
         if (sortOrder === 'desc') return b.price - a.price;
@@ -31,7 +29,6 @@ const AllAnimals = () => {
                     All Available Animals
                 </h2>
                 
-                {/* Sorting Dropdown */}
                 <select 
                     className="select select-primary w-full md:w-xs bg-[#0D0D0D] text-white focus:outline-none"
                     value={sortOrder}

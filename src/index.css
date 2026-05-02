@@ -13,3 +13,13 @@ body {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.tooltip::before {
+    color: white !important;
+    font-weight: 600 !important;
+    background-color: #6d28d9 !important; 
+}
+
+.navbar {
+    overflow: visible !important;
+}
