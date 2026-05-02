@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "name": "Deshi Shahi Cow",
+    "type": "Cow",
+    "breed": "Local Deshi",
+    "price": 120000,
+    "weight": 280,
+    "age": 3,
+    "location": "Bogura",
+    "description": "Healthy deshi cow suitable for Qurbani. Well fed with natural খাবার.",
+    "image": "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&q=80&w=800",
+    "category": "Large Animal"
+  },
+  {
+    "id": 2,
+    "name": "Brahman Cross",
+    "type": "Cow",
+    "breed": "Brahman",
+    "price": 350000,
+    "weight": 550,
+    "age": 4,
+    "location": "Rajshahi",
+    "description": "Premium Brahman cross breed. Excellent health and high meat yield. Perfect for large families.",
+    "image": "https://images.unsplash.com/photo-1590447158019-883d8d5f8bc7?auto=format&fit=crop&q=80&w=800",
+    "category": "Large Animal"
+  },
+  {
+    "id": 3,
+    "name": "Black Bengal Goat",
+    "type": "Goat",
+    "breed": "Black Bengal",
+    "price": 25000,
+    "weight": 35,
+    "age": 2,
+    "location": "Kushtia",
+    "description": "Authentic Black Bengal goat. Known for premium meat quality and tender taste.",
+    "image": "https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&q=80&w=800",
+    "category": "Small Animal"
+  },
+  {
+    "id": 4,
+    "name": "Sahiwal Bull",
+    "type": "Cow",
+    "breed": "Sahiwal",
+    "price": 280000,
+    "weight": 480,
+    "age": 3,
+    "location": "Pabna",
+    "description": "Beautiful red Sahiwal bull. Very active, healthy, and comes with proper vaccination records.",
+    "image": "https://images.unsplash.com/photo-1620021676610-d86b978a6db9?auto=format&fit=crop&q=80&w=800",
+    "category": "Large Animal"
+  },
+  {
+    "id": 5,
+    "name": "Jamunapari Goat",
+    "type": "Goat",
+    "breed": "Jamunapari",
+    "price": 45000,
+    "weight": 55,
+    "age": 2,
+    "location": "Dhaka",
+    "description": "Large sized Jamunapari goat. Beautiful appearance and great health condition.",
+    "image": "https://images.unsplash.com/photo-1528318269466-6b217a944358?auto=format&fit=crop&q=80&w=800",
+    "category": "Small Animal"
+  },
+  {
+    "id": 6,
+    "name": "MirKadim White Cow",
+    "type": "Cow",
+    "breed": "MirKadim",
+    "price": 400000,
+    "weight": 320,
+    "age": 3,
+    "location": "Munshiganj",
+    "description": "Rare MirKadim white cow. Fed with special diet. Famous for distinct taste and premium quality.",
+    "image": "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&q=80&w=800",
+    "category": "Large Animal"
+  }
+]
