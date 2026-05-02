@@ -20,6 +20,7 @@ const Navbar = () => {
             <li><NavLink to="/" className={({ isActive }) => isActive ? "text-primary font-bold border-b-2 border-primary rounded-none" : "hover:text-primary transition-colors"}>Home</NavLink></li>
             <li><NavLink to="/animals" className={({ isActive }) => isActive ? "text-primary font-bold border-b-2 border-primary rounded-none" : "hover:text-primary transition-colors"}>All Animals</NavLink></li>
             {user && <li><NavLink to="/my-profile" className={({ isActive }) => isActive ? "text-primary font-bold border-b-2 border-primary rounded-none" : "hover:text-primary transition-colors"}>My Profile</NavLink></li>}
+            {user && <li><NavLink to="/my-orders" className={({ isActive }) => isActive ? "text-primary font-bold border-b-2 border-primary rounded-none" : "hover:text-primary transition-colors"}>My Orders</NavLink></li>}
         </>
     );
 

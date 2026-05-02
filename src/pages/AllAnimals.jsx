@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AllAnimals = () => {
     const [animals, setAnimals] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [sortOrder, setSortOrder] = useState(''); // 'asc' বা 'desc' স্টোর করার জন্য
+    
+    const [category, setCategory] = useState("All");
+    const [sortOrder, setSortOrder] = useState("Default");
 
     useEffect(() => {
         fetch('/animals.json')
@@ -12,63 +14,82 @@ const AllAnimals = () => {
             .then(data => {
                 setAnimals(data);
                 setLoading(false);
-            })
-            .catch(err => console.error("Error fetching data: ", err));
+            });
     }, []);
 
-    const sortedAnimals = [...animals].sort((a, b) => {
-        if (sortOrder === 'asc') return a.price - b.price;
-        if (sortOrder === 'desc') return b.price - a.price;
-        return 0;
-    });
+    let filteredAnimals = [...animals];
+
+    if (category !== "All") {
+        filteredAnimals = filteredAnimals.filter(animal => animal.category === category);
+    }
+
+    if (sortOrder === "LowToHigh") {
+        filteredAnimals.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === "HighToLow") {
+        filteredAnimals.sort((a, b) => b.price - a.price);
+    }
+
+    if (loading) return <div className="text-center py-20"><span className="loading loading-spinner text-primary loading-lg"></span></div>;
 
     return (
-        <div className="py-8 animate__animated animate__fadeIn">
-            <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
-                <h2 className="text-4xl font-bold text-white border-b-2 border-primary pb-2">
-                    All Available Animals
-                </h2>
+        <div className="py-10 px-4 max-w-7xl mx-auto animate__animated animate__fadeIn">
+            <h2 className="text-4xl font-black text-center text-white mb-10">Explore <span className="text-primary">All Animals</span></h2>
+            
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-12 glass-effect p-4 rounded-2xl border border-white/10">
                 
-                <select 
-                    className="select select-primary w-full md:w-xs bg-[#0D0D0D] text-white focus:outline-none"
-                    value={sortOrder}
-                    onChange={(e) => setSortOrder(e.target.value)}
-                >
-                    <option value="">Sort by Price (Default)</option>
-                    <option value="asc">Price: Low to High</option>
-                    <option value="desc">Price: High to Low</option>
-                </select>
+                <div className="flex items-center gap-3 w-full md:w-auto">
+                    <span className="text-gray-400 font-medium">Category:</span>
+                    <select 
+                        value={category} 
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="select select-bordered bg-white/5 border-white/10 text-white focus:border-primary w-full md:w-48"
+                    >
+                        <option value="All" className="bg-[#121212]">All Categories</option>
+                        <option value="Large Animal" className="bg-[#121212]">Large Animals (Cow/Bull)</option>
+                        <option value="Small Animal" className="bg-[#121212]">Small Animals (Goat/Sheep)</option>
+                    </select>
+                </div>
+
+                <div className="flex items-center gap-3 w-full md:w-auto">
+                    <span className="text-gray-400 font-medium">Sort By:</span>
+                    <select 
+                        value={sortOrder} 
+                        onChange={(e) => setSortOrder(e.target.value)}
+                        className="select select-bordered bg-white/5 border-white/10 text-white focus:border-primary w-full md:w-48"
+                    >
+                        <option value="Default" className="bg-[#121212]">Default</option>
+                        <option value="LowToHigh" className="bg-[#121212]">Price: Low to High</option>
+                        <option value="HighToLow" className="bg-[#121212]">Price: High to Low</option>
+                    </select>
+                </div>
             </div>
 
-            {loading ? (
-                <div className="flex justify-center items-center h-64">
-                    <span className="loading loading-spinner loading-lg text-primary"></span>
-                </div>
-            ) : (
+            {filteredAnimals.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {sortedAnimals.map(animal => (
-                        <div key={animal.id} className="card glass-effect border border-white/5 shadow-xl hover:shadow-primary/20 transition-all duration-300">
-                            <figure className="px-4 pt-4 relative">
-                                <img src={animal.image} alt={animal.name} className="rounded-xl h-56 w-full object-cover" />
-                                <div className="absolute top-6 right-6 badge badge-primary">{animal.category}</div>
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title text-2xl text-white">{animal.name}</h2>
-                                <div className="text-gray-400 space-y-1 mt-2 mb-4">
-                                    <p><span className="font-semibold text-gray-300">Breed:</span> {animal.breed}</p>
-                                    <p><span className="font-semibold text-gray-300">Location:</span> {animal.location}</p>
-                                    <p><span className="font-semibold text-gray-300">Weight:</span> {animal.weight} kg</p>
+                    {filteredAnimals.map(animal => (
+                        <div key={animal.id} className="card glass-effect border border-white/10 shadow-xl group hover:-translate-y-2 transition-all duration-300">
+                            <figure className="relative h-60 overflow-hidden">
+                                <img src={animal.image} alt={animal.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                <div className="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                                    {animal.category}
                                 </div>
-                                <p className="text-3xl font-bold text-primary mb-4">৳ {animal.price.toLocaleString()}</p>
-                                <div className="card-actions w-full mt-auto">
-                                    <Link to={`/details-page/${animal.id}`} className="btn btn-primary w-full text-white shadow-lg shadow-primary/30 border-none">
-                                        View Details
-                                    </Link>
+                            </figure>
+                            <div className="card-body p-6">
+                                <h2 className="card-title text-2xl font-bold text-white mb-2">{animal.name}</h2>
+                                <div className="flex justify-between text-gray-400 text-sm mb-4">
+                                    <p>Breed: <span className="text-white">{animal.breed}</span></p>
+                                    <p>Weight: <span className="text-white">{animal.weight}kg</span></p>
+                                </div>
+                                <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
+                                    <span className="text-2xl font-black text-primary">৳ {animal.price.toLocaleString()}</span>
+                                    <Link to={`/details-page/${animal.id}`} className="btn btn-primary btn-sm rounded-lg text-white">View Details</Link>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
+            ) : (
+                <div className="text-center py-20 text-gray-400 text-xl">No animals found in this category.</div>
             )}
         </div>
     );

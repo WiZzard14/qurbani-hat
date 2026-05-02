@@ -20,6 +20,26 @@ const AnimalDetails = () => {
 
     const handleBooking = (e) => {
         e.preventDefault();
+        const phone = e.target.phone?.value || "N/A";
+        const address = e.target.address?.value || "N/A";
+
+        const orderData = {
+            orderId: new Date().getTime().toString(), // ইউনিক আইডি
+            animalId: animal.id,
+            animalName: animal.name,
+            price: animal.price,
+            image: animal.image,
+            buyerEmail: user?.email,
+            phone: phone,
+            address: address,
+            date: new Date().toLocaleDateString()
+        };
+
+        const existingOrders = JSON.parse(localStorage.getItem('qurbaniOrders')) || [];
+        
+        existingOrders.push(orderData);
+        localStorage.setItem('qurbaniOrders', JSON.stringify(existingOrders));
+
         toast.success("Animal Booked Successfully!");
         e.target.reset(); 
     };
@@ -30,7 +50,6 @@ const AnimalDetails = () => {
         <div className="py-10 animate__animated animate__fadeIn px-4 lg:px-0">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 glass-effect p-8 rounded-[2rem] border border-white/10 shadow-2xl">
                 
-                {/* Animal Image & Info Section */}
                 <div className="space-y-6">
                     <div className="relative group">
                         <img src={animal.image} alt={animal.name} className="rounded-3xl w-full h-[450px] object-cover shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]" />
@@ -72,7 +91,6 @@ const AnimalDetails = () => {
                 </div>
 
                 <div className="bg-black/40 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-inner relative overflow-hidden">
-                    {/* Background Glow */}
                     <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-primary/10 blur-[60px] rounded-full"></div>
                     
                     <div className="relative z-10">
@@ -100,7 +118,7 @@ const AnimalDetails = () => {
                                 <label className="label-text text-gray-400 mb-2 ml-1">Phone Number</label>
                                 <div className="relative">
                                     <HiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl" />
-                                    <input type="text" placeholder="e.g. +880 1XXX-XXXXXX" className="input input-bordered w-full pl-12 bg-white/5 border-white/10 focus:border-primary text-white" required />
+                                    <input type="text" name="phone" placeholder="e.g. +880 1XXX-XXXXXX" className="input input-bordered w-full pl-12 bg-white/5 border-white/10 focus:border-primary text-white" required />
                                 </div>
                             </div>
 
@@ -108,7 +126,7 @@ const AnimalDetails = () => {
                                 <label className="label-text text-gray-400 mb-2 ml-1">Full Delivery Address</label>
                                 <div className="relative">
                                     <HiLocationMarker className="absolute left-4 top-4 text-gray-500 text-xl" />
-                                    <textarea placeholder="House, Road, Area..." className="textarea textarea-bordered w-full pl-12 bg-white/5 border-white/10 focus:border-primary text-white h-24" required></textarea>
+                                    <textarea name="address" placeholder="House, Road, Area..." className="textarea textarea-bordered w-full pl-12 bg-white/5 border-white/10 focus:border-primary text-white h-24" required></textarea>
                                 </div>
                             </div>
 

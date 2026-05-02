@@ -8,6 +8,7 @@ import AnimalDetails from "../pages/AnimalDetails.jsx";
 import PrivateRoute from "./PrivateRoute.jsx"; 
 import MyProfile from "../pages/MyProfile.jsx";
 import UpdateProfile from "../pages/UpdateProfile.jsx";
+import MyOrders from "../pages/MyOrders";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
             { 
                 path: "/update-profile", 
                 element: <PrivateRoute><UpdateProfile /></PrivateRoute> 
+            },
+            { 
+                path: "/my-orders", 
+                element: <PrivateRoute><MyOrders /></PrivateRoute> 
             },
         ]
     }
