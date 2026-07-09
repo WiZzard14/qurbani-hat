@@ -1,16 +1,70 @@
-# React + Vite
+# Qurbani Hat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
 
-Currently, two official plugins are available:
+Qurbani Hat is a frontend web application designed for a Qurbani animal marketplace. The project provides a clean and user-friendly interface where users can explore animal listings and view important details in an organized way.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Project Link
 
-## React Compiler
+Live link is not available yet.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Repository Link
 
-## Expanding the ESLint configuration
+[GitHub Repository](https://github.com/WiZzard14/qurbani-hat)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+
+- React
+- JavaScript
+- Tailwind CSS
+- Firebase
+- Responsive Web Design
+
+## Core Features
+
+- Modern marketplace-style user interface
+- Responsive design for different devices
+- Animal listing display
+- Clean navigation system
+- User-friendly layout
+- Organized content structure
+
+## Dependencies Used
+
+- react
+- react-router-dom
+- tailwindcss
+- firebase
+- daisyui
+- react-icons
+- sweetalert2
+
+## How to Run the Project Locally
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/WiZzard14/qurbani-hat.git
+```
+
+2. Go to the project folder:
+
+```bash
+cd qurbani-hat
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run the project:
+
+```bash
+npm run dev
+```
+
+## Screenshot
+
+Add a clean screenshot of the homepage here.
